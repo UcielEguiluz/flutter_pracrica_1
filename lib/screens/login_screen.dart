@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_2/responsive.dart';
 import 'package:flutter_application_2/widgets/loading_modal.dart';
 import 'package:social_login_buttons/social_login_buttons.dart';
 
@@ -16,11 +17,11 @@ class _LoginScreenState extends State<LoginScreen> {
 
   final txtEmail = TextFormField(
     decoration: const InputDecoration(
-        label: Text('Tu correo baboso'), border: OutlineInputBorder()),
+        label: Text('Tu correo'), border: OutlineInputBorder()),
   );
   final txtPass = TextFormField(
     decoration: const InputDecoration(
-        label: Text('Tu contrasenia baboso'), border: OutlineInputBorder()),
+        label: Text('Tu contrasenia'), border: OutlineInputBorder()),
   );
 
   final spaceHorizontal = SizedBox(
@@ -77,37 +78,72 @@ class _LoginScreenState extends State<LoginScreen> {
                     opacity: .9,
                     fit: BoxFit.cover,
                     image: AssetImage('assets/fondo.jpg'))),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                  horizontal:
-                      50), //aqui se le da un padding horizontal simetrico a las cajas de texto para que estas no abarquen toda la pantalla de forma horizontal
-              child: Stack(
-                alignment: Alignment.topCenter,
-                children: [
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      txtEmail,
-                      spaceHorizontal,
-                      txtPass,
-                      spaceHorizontal,
-                      btnEmail,
-                      spaceHorizontal,
-                      btnGoogle,
-                      spaceHorizontal,
-                      btnFace,
-                      spaceHorizontal,
-                      btnGit,
-                      spaceHorizontal,
-                      txtRegister
-                    ],
-                  ),
-                  Positioned(
-                    top: 25,
-                    child: imgLogo,
-                  )
-                ],
+            child: Responsive(
+              mobile: Padding(
+                padding: const EdgeInsets.symmetric(
+                    horizontal:
+                        50), //aqui se le da un padding horizontal simetrico a las cajas de texto para que estas no abarquen toda la pantalla de forma horizontal
+                child: Stack(
+                  alignment: Alignment.topCenter,
+                  children: [
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        txtEmail,
+                        spaceHorizontal,
+                        txtPass,
+                        spaceHorizontal,
+                        btnEmail,
+                        spaceHorizontal,
+                        btnGoogle,
+                        spaceHorizontal,
+                        btnFace,
+                        spaceHorizontal,
+                        btnGit,
+                        spaceHorizontal,
+                        txtRegister
+                      ],
+                    ),
+                    Positioned(
+                      top: 25,
+                      child: imgLogo,
+                    )
+                  ],
+                ),
               ),
+              desktop: Row(
+                children: [
+                  Expanded(child: imgLogo),
+                  Expanded(child: 
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SizedBox(
+                        width: 350,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            txtEmail,
+                            spaceHorizontal,
+                            txtPass,
+                            spaceHorizontal,
+                            btnEmail,
+                            spaceHorizontal,
+                            btnGoogle,
+                            spaceHorizontal,
+                            btnFace,
+                            spaceHorizontal,
+                            btnGit,
+                            spaceHorizontal,
+                            txtRegister,
+                          ],
+                        ),
+                      )
+                    ],
+                  ))
+                ],
+              )
+              
             ),
           ),
           isLoading ? const LoadingModalWidget() : Container()
