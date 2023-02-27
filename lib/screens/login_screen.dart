@@ -115,32 +115,32 @@ class _LoginScreenState extends State<LoginScreen> {
                 children: [
                   Expanded(child: imgLogo),
                   Expanded(child: 
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
                       SizedBox(
-                        width: 350,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            txtEmail,
-                            spaceHorizontal,
-                            txtPass,
-                            spaceHorizontal,
-                            btnEmail,
-                            spaceHorizontal,
-                            btnGoogle,
-                            spaceHorizontal,
-                            btnFace,
-                            spaceHorizontal,
-                            btnGit,
-                            spaceHorizontal,
-                            txtRegister,
-                          ],
+                        width: 250,
+                        child: Padding(
+                          padding: const EdgeInsets.fromLTRB(8.0,4.0,100.0,1.0),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              txtEmail,
+                              spaceHorizontal,
+                              txtPass,
+                              spaceHorizontal,
+                              btnEmail,
+                              spaceHorizontal,
+                              btnGoogle,
+                              spaceHorizontal,
+                              btnFace,
+                              spaceHorizontal,
+                              btnGit,
+                              spaceHorizontal,
+                              txtRegister,
+                            ],
+                          ),
                         ),
                       )
-                    ],
-                  ))
+                    ,
+                  )
                 ],
               )
               
