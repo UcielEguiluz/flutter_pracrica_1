@@ -1,37 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_2/database/database_helper.dart';
 import 'package:flutter_application_2/models/popular_model.dart';
-import 'package:flutter_application_2/network/api_popular.dart';
 import 'package:flutter_application_2/screens/movie_detail.dart';
 import 'package:flutter_application_2/widgets/item_popular.dart';
 
-class ListPopularVideos extends StatefulWidget {
-  const ListPopularVideos({super.key});
+class ListFavorites extends StatefulWidget {
+  const ListFavorites({super.key});
 
   @override
-  State<ListPopularVideos> createState() => _ListPopularVideosState();
+  State<ListFavorites> createState() => _ListFavoritesState();
 }
 
-class _ListPopularVideosState extends State<ListPopularVideos> {
-  ApiPopular? apiPopular;
+class _ListFavoritesState extends State<ListFavorites> {
   DatabaseHelper? database;
+
   @override
   void initState() {
     super.initState();
-    apiPopular = ApiPopular();
     database = DatabaseHelper();
   }
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+   return Scaffold(
       appBar: AppBar(
-        title: Text('List Popular'),
+        title: Text('List Favorites'),
       ),
       body: Stack(
         children: [
           FutureBuilder(
-            future: apiPopular!.getAllPopular(),
+            future: database!.GETALLpopular(),
             builder: (context, AsyncSnapshot<List<PopularModel>?> snapshot) {
               if (snapshot.hasData) {
                 return GridView.builder(
@@ -66,12 +63,10 @@ class _ListPopularVideosState extends State<ListPopularVideos> {
             Align(
               alignment: Alignment.bottomRight,
               child: FloatingActionButton.extended(
-                onPressed: (){
-                  Navigator.pushNamed(context, '/apiMoviesFav');
-                },
+                onPressed: (){},
                 icon: Icon(Icons.favorite),
                 label: Text('Favoritos')))],
       ),
     );
   }
-}
+  }

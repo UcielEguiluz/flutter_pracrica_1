@@ -3,13 +3,16 @@ import 'package:flutter_application_2/database/database_helper.dart';
 import 'package:flutter_application_2/models/actor_model.dart';
 import 'package:flutter_application_2/models/popular_model.dart';
 import 'package:flutter_application_2/network/api_popular.dart';
+import 'package:flutter_application_2/provider/flags_provider.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class MovieDetail extends StatelessWidget {
   ApiPopular apiPopular = ApiPopular();
   DatabaseHelper database = DatabaseHelper();
+  
 
   final PopularModel modelito;
 
@@ -17,6 +20,8 @@ class MovieDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    FlagsProvider flag = Provider.of<FlagsProvider>(context);
+
     MediaQueryData queryData;
     queryData = MediaQuery.of(context);
     double rateo = 0;
@@ -48,6 +53,54 @@ class MovieDetail extends StatelessWidget {
                           'https://image.tmdb.org/t/p/w500/${modelito.posterPath}'))),
             ),
           ),
+          Align(
+              alignment: Alignment.bottomRight,
+              child: FutureBuilder(
+                  future: database.GETONEpopular(modelito.id!),
+                  builder: (context, snapshot) {
+                      if (snapshot.data != true) {
+                        return FloatingActionButton(
+                            backgroundColor: Colors.white70,
+                            foregroundColor: Colors.red,
+                            child: Icon(Icons.favorite_border),
+                            onPressed: () {
+                              database
+                                  .INSERT(
+                                      'tblPopularFavorito', modelito.toMap())
+                                  .then((value) {
+                                flag.setflagListPost();
+                                var msj = value > 0
+                                    ? 'Se agrego a favoritos'
+                                    : 'ocurrio un error';
+
+                                var snackBar = SnackBar(content: Text(msj));
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(snackBar);
+                              });
+                            });
+                      } else {
+                        return FloatingActionButton(
+                            backgroundColor: Colors.white70,
+                            foregroundColor: Colors.red,
+                            child: Icon(Icons.favorite),
+                            onPressed: () {
+                              database
+                                  .DELETEpopular(
+                                      'tblPopularFavorito', modelito.id!)
+                                  .then((value) {
+                                flag.setflagListPost();
+                                var msj = value > 0
+                                    ? 'Se eliminó correctamente'
+                                    : 'ocurrio un error';
+
+                                var snackBar = SnackBar(content: Text(msj));
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(snackBar);
+                              });
+                            });
+                      }
+                    
+                  })),
           Positioned(
               top: 350,
               child: Container(

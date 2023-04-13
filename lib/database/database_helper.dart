@@ -1,10 +1,10 @@
 import "dart:io";
+import "package:flutter_application_2/models/popular_model.dart";
 import "package:flutter_application_2/models/post_model.dart";
 import 'package:path/path.dart';
 import "package:flutter_application_2/routes.dart";
 import "package:path_provider/path_provider.dart";
 import "package:sqflite/sqflite.dart";
-
 
 class DatabaseHelper {
   static final nameDB = 'SOCIALDB';
@@ -32,7 +32,25 @@ class DatabaseHelper {
                                           (idPost INTEGER PRIMARY KEY, 
                                           dscPost VARCHAR(200), 
                                           datePost DATE)''';
-    db.execute(query);
+
+    String query2 = '''
+      CREATE TABLE tblPopularFavorito (
+        backdrop_path TEXT,
+        id INTEGER,
+        original_language TEXT,
+        original_title TEXT,
+        overview TEXT,
+        popularity REAL,
+        poster_path TEXT,
+        release_date TEXT,
+        title TEXT,
+        vote_average REAL,
+        vote_count INTEGER
+      );
+    ''';
+
+    await db.execute(query);
+    await db.execute(query2);
   }
 
   Future<int> INSERT(String tblName, Map<String, dynamic> data) async {
@@ -55,5 +73,27 @@ class DatabaseHelper {
     var conexion = await database;
     var result = await conexion.query('tblPost');
     return result.map((post) => PostModel.fromMap(post)).toList();
+  }
+
+  //------------------------------------------------------QUERYS TABLA FAVORITOS------------------------------------------------------
+
+  Future<List<PopularModel>> GETALLpopular() async {
+    var conexion = await database;
+    var result = await conexion.query('tblPopularFavorito');
+    return result.map((event) => PopularModel.fromMap(event)).toList();
+  }
+
+   Future<int> DELETEpopular(String tblName, int id_popular) async {
+    var conexion = await database;
+    return conexion.delete(tblName, where: 'id=?', whereArgs: [id_popular]);
+  }
+
+  Future<bool> GETONEpopular(int id_popular) async {
+    var conexion = await database;
+    var result = await conexion.query('tblPopularFavorito',where: 'id=$id_popular');
+    if (result.isNotEmpty){
+      return true;
+    }
+    return false;
   }
 }
