@@ -56,7 +56,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
             ListTile(
               onTap: () {Navigator.pushNamed(context, '/apiMovies');},
               title: Text('Popular de API'),
-              subtitle: Text('Ver las poplares del hub'),
+              subtitle: Text('Ver las peliculas mas populares de la api'),
               leading: Icon(Icons.settings),
               trailing: Icon(Icons.movie),
             ),

@@ -14,7 +14,7 @@ class OnboardingPage extends StatelessWidget {
     CardPlanetData(
       title: "TECNMX Celaya",
       subtitle:
-          "El Tecnológico Nacional de México en Celaya fue fundado en 1958 como un centro de segunda enseñanza, capacitación técnica para trabajadores y preparatoria técnica especializada",
+          "El Tecnológico Nacional de México en Celaya fue fundado en 1958",
       image: const AssetImage("assets/images/img-1.png"),
       backgroundColor: const Color.fromRGBO(0, 10, 56, 1),
       titleColor: Colors.pink,
@@ -24,7 +24,7 @@ class OnboardingPage extends StatelessWidget {
     CardPlanetData(
       title: "Ingeniería en Sistemas Computacionales",
       subtitle:
-          "El y la Ingeniero/a en Sistemas Computacionales, tiene conocimientos de alto nivel tecnológico y científico para ser un profesionista con visión innovadora capaz de crear y proveer soluciones de software e infraestructura computacional de vanguardia en la nueva y dinámica sociedad dela era digital.",
+          "El y la Ingeniero/a en Sistemas Computacionales, es bueno pa todo porque es CHIDO.",
       image: const AssetImage("assets/images/img-2.png"),
       backgroundColor: Colors.white,
       titleColor: Colors.purple,
@@ -34,7 +34,7 @@ class OnboardingPage extends StatelessWidget {
     CardPlanetData(
       title: "Misión",
       subtitle:
-          "Contribuir a la transformación de la sociedad a través de la formación de ciudadanas y ciudadanos libres y responsables, con sentido de la iniciativa, el respeto, la equidad, la cooperación, la actitud creativa y emprendedora, orientados a la investigación e innovación.",
+          "Pura ingenieria, abajo la licenciatura con casco.",
       image: const AssetImage(
         "assets/images/img-3.png",
       ),

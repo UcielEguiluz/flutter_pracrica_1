@@ -14,6 +14,9 @@ class TemasPage extends StatefulWidget {
 }
 
 class _TemasPageState extends State<TemasPage> {
+  final espacio = SizedBox(
+    height: 10,
+  );
   @override
   Widget build(BuildContext context) {
     ThemeProvider theme = Provider.of<ThemeProvider>(context);
@@ -26,30 +29,68 @@ class _TemasPageState extends State<TemasPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            TextButton(
-                onPressed: () {
-                  theme.TemaClaro();
-                },
-                child: Text("Tema Claro")),
-            SizedBox(
-              height: 10,
+            SizedBox.fromSize(
+              size: Size(80, 80),
+              child: ClipOval(
+                child: Material(
+                  color: Colors.blueAccent,
+                  child: InkWell(
+                    splashColor: Colors.white,
+                    onTap: () {
+                      theme.TemaClaro();
+                    },
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [Icon(Icons.wb_sunny_outlined), Text("Claro")],
+                    ),
+                  ),
+                ),
+              ),
             ),
-            TextButton(
-                onPressed: () {
-                  theme.TemaOscuro();
-                },
-                child: Text("Tema Oscuro")),
-            SizedBox(
-              height: 10,
+            espacio,
+            SizedBox.fromSize(
+              size: Size(80, 80),
+              child: ClipOval(
+                child: Material(
+                  color: Colors.black54,
+                  child: InkWell(
+                    splashColor: Colors.black12,
+                    onTap: () {
+                      theme.TemaOscuro();
+                    },
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.nightlight_outlined),
+                        Text("Oscuro")
+                      ],
+                    ),
+                  ),
+                ),
+              ),
             ),
-            TextButton(
-                onPressed: () {
-                  theme.TemaPersonalizado();
-                },
-                child: Text("Tema Personalizado")),
-            SizedBox(
-              height: 10,
-            )
+            espacio,
+            SizedBox.fromSize(
+              size: Size(80, 80),
+              child: ClipOval(
+                child: Material(
+                  color: Color.fromARGB(255, 4, 155, 24),
+                  child: InkWell(
+                    splashColor: Color.fromARGB(255, 82, 198, 98),
+                    onTap: () {
+                      theme.TemaPersonalizado();
+                    },
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.brush_outlined),
+                        Text("Custom")
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),
