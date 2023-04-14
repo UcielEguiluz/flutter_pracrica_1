@@ -13,26 +13,26 @@ class ItemPostWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final aang = CircleAvatar(
+    const aang = CircleAvatar(
       backgroundImage: AssetImage('assets/logo.png'),
     );
 
-    final txtUser = Text('El Nata');
+    const txtUser = Text('El Nata');
 
-    final datePost = Text('06-03-2023');
+    const datePost = Text('06-03-2023');
 
-    final imgPost = Image(
+    const imgPost = Image(
       image: AssetImage('assets/fondo.jpg'),
       height: 150,
     );
 
-    final space = SizedBox(
+    const space = SizedBox(
       width: 5,
     );
 
     final txtDesc = Text(objPostModel!.dscPost!);
 
-    final laik = Icon(Icons.rate_review);
+    const laik = Icon(Icons.rate_review);
 
     FlagsProvider flag = Provider.of<FlagsProvider>(context);
 
@@ -44,7 +44,7 @@ class ItemPostWidget extends StatelessWidget {
           color: Colors.deepPurpleAccent,
           borderRadius: BorderRadius.circular(10)),
       child: Column(children: [
-        Row(
+        const Row(
           children: [aang, space, txtUser, space, datePost],
         ),
         Row(
@@ -59,14 +59,14 @@ class ItemPostWidget extends StatelessWidget {
                 onPressed: () {
                   Navigator.pushNamed(context, '/add', arguments: objPostModel);
                 },
-                icon: Icon(Icons.edit)),
+                icon: const Icon(Icons.edit)),
             IconButton(
                 onPressed: () {
                   showDialog(
                     context: context,
                     builder: (context) => AlertDialog(
-                      title: Text('Confirmar borrado'),
-                      content: Text('Deseas borrar el post'),
+                      title: const Text('Confirmar borrado'),
+                      content: const Text('Deseas borrar el post'),
                       actions: [
                         TextButton(
                           onPressed: () {
@@ -75,14 +75,14 @@ class ItemPostWidget extends StatelessWidget {
                                 .then((value) => flag.setflagListPost());
                             Navigator.pop(context);
                           },
-                          child: Text('Ok'),
+                          child: const Text('Ok'),
                         ),
                         TextButton(onPressed: () {}, child: const Text('No'))
                       ],
                     ),
                   );
                 },
-                icon: Icon(
+                icon: const Icon(
                   Icons.delete,
                 ))
           ],

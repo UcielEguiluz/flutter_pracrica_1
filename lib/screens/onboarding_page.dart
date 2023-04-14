@@ -1,6 +1,5 @@
 import 'package:concentric_transition/page_view.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_2/main.dart';
 import 'package:lottie/lottie.dart';
 import 'package:flutter_application_2/screens/login_screen.dart';
 
@@ -38,8 +37,8 @@ class OnboardingPage extends StatelessWidget {
       image: const AssetImage(
         "assets/images/img-3.png",
       ),
-      backgroundColor: Color.fromARGB(255, 42, 5, 187),
-      titleColor: Color.fromARGB(255, 0, 243, 252),
+      backgroundColor: const Color.fromARGB(255, 42, 5, 187),
+      titleColor: const Color.fromARGB(255, 0, 243, 252),
       subtitleColor: Colors.white,
       background: LottieBuilder.asset("assets/animation/bg-3.json"),
     ),

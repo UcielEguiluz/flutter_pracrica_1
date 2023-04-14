@@ -5,14 +5,12 @@ import 'package:flutter_application_2/models/popular_model.dart';
 import 'package:flutter_application_2/network/api_popular.dart';
 import 'package:flutter_application_2/provider/flags_provider.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class MovieDetail extends StatelessWidget {
   ApiPopular apiPopular = ApiPopular();
   DatabaseHelper database = DatabaseHelper();
-  
 
   final PopularModel modelito;
 
@@ -30,12 +28,12 @@ class MovieDetail extends StatelessWidget {
     } else {
       rateo = 0; //return value if str is null
     }
-    final imgPortada = Image(
-        image: new NetworkImage(
+    /*final imgPortada = Image(
+        image: NetworkImage(
             'https://image.tmdb.org/t/p/w500/${modelito.posterPath}'),
         height: 200,
         width: 200,
-        fit: BoxFit.contain);
+        fit: BoxFit.contain);*/
     return Scaffold(
       backgroundColor: Colors.black,
       body: Stack(
@@ -43,13 +41,13 @@ class MovieDetail extends StatelessWidget {
           Hero(
             tag: modelito.id!,
             child: Container(
-              decoration: new BoxDecoration(
-                  color: Color.fromARGB(255, 58, 64, 73),
-                  image: new DecorationImage(
+              decoration: BoxDecoration(
+                  color: const Color.fromARGB(255, 58, 64, 73),
+                  image: DecorationImage(
                       fit: BoxFit.cover,
-                      colorFilter: new ColorFilter.mode(
+                      colorFilter: ColorFilter.mode(
                           Colors.black.withOpacity(0.2), BlendMode.dstATop),
-                      image: new NetworkImage(
+                      image: NetworkImage(
                           'https://image.tmdb.org/t/p/w500/${modelito.posterPath}'))),
             ),
           ),
@@ -58,48 +56,45 @@ class MovieDetail extends StatelessWidget {
               child: FutureBuilder(
                   future: database.GETONEpopular(modelito.id!),
                   builder: (context, snapshot) {
-                      if (snapshot.data != true) {
-                        return FloatingActionButton(
-                            backgroundColor: Colors.white70,
-                            foregroundColor: Colors.red,
-                            child: Icon(Icons.favorite_border),
-                            onPressed: () {
-                              database
-                                  .INSERT(
-                                      'tblPopularFavorito', modelito.toMap())
-                                  .then((value) {
-                                flag.setflagListPost();
-                                var msj = value > 0
-                                    ? 'Se agrego a favoritos'
-                                    : 'ocurrio un error';
+                    if (snapshot.data != true) {
+                      return FloatingActionButton(
+                          backgroundColor: Colors.white70,
+                          foregroundColor: Colors.red,
+                          child: const Icon(Icons.favorite_border),
+                          onPressed: () {
+                            database
+                                .INSERT('tblPopularFavorito', modelito.toMap())
+                                .then((value) {
+                              flag.setflagListPost();
+                              var msj = value > 0
+                                  ? 'Se agrego a favoritos'
+                                  : 'ocurrio un error';
 
-                                var snackBar = SnackBar(content: Text(msj));
-                                ScaffoldMessenger.of(context)
-                                    .showSnackBar(snackBar);
-                              });
+                              var snackBar = SnackBar(content: Text(msj));
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(snackBar);
                             });
-                      } else {
-                        return FloatingActionButton(
-                            backgroundColor: Colors.white70,
-                            foregroundColor: Colors.red,
-                            child: Icon(Icons.favorite),
-                            onPressed: () {
-                              database
-                                  .DELETEpopular(
-                                      'tblPopularFavorito', modelito.id!)
-                                  .then((value) {
-                                flag.setflagListPost();
-                                var msj = value > 0
-                                    ? 'Se eliminó correctamente'
-                                    : 'ocurrio un error';
+                          });
+                    } else {
+                      return FloatingActionButton(
+                          backgroundColor: Colors.white70,
+                          foregroundColor: Colors.red,
+                          child: const Icon(Icons.favorite),
+                          onPressed: () {
+                            database.DELETEpopular(
+                                    'tblPopularFavorito', modelito.id!)
+                                .then((value) {
+                              flag.setflagListPost();
+                              var msj = value > 0
+                                  ? 'Se eliminó correctamente'
+                                  : 'ocurrio un error';
 
-                                var snackBar = SnackBar(content: Text(msj));
-                                ScaffoldMessenger.of(context)
-                                    .showSnackBar(snackBar);
-                              });
+                              var snackBar = SnackBar(content: Text(msj));
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(snackBar);
                             });
-                      }
-                    
+                          });
+                    }
                   })),
           Positioned(
               top: 350,
@@ -114,7 +109,7 @@ class MovieDetail extends StatelessWidget {
                         return YoutubePlayer(
                           controller: YoutubePlayerController(
                               initialVideoId: snapshot.data.toString(),
-                              flags: YoutubePlayerFlags(
+                              flags: const YoutubePlayerFlags(
                                 autoPlay: true,
                                 mute: false,
                                 controlsVisibleAtStart: false,
@@ -123,7 +118,7 @@ class MovieDetail extends StatelessWidget {
                           progressIndicatorColor: Colors.amber,
                         );
                       } else {
-                        return Center(
+                        return const Center(
                           child: CircularProgressIndicator(),
                         );
                       }
@@ -131,7 +126,7 @@ class MovieDetail extends StatelessWidget {
               )),
           Positioned(
             top: 180,
-            child: Container(
+            child: SizedBox(
               height: 150,
               width: queryData.size.width,
               //color: Colors.purple,
@@ -157,7 +152,7 @@ class MovieDetail extends StatelessWidget {
                         ),
                       );
                     } else {
-                      return Center(
+                      return const Center(
                         child: CircularProgressIndicator(),
                       );
                     }
@@ -166,7 +161,7 @@ class MovieDetail extends StatelessWidget {
           ),
           SingleChildScrollView(
             child: Container(
-              padding: EdgeInsets.only(top: 25),
+              padding: const EdgeInsets.only(top: 25),
               width: queryData.size.width, //parent size
               height: 150, //parent size
               child: LayoutBuilder(builder: (context, size) {
@@ -175,7 +170,7 @@ class MovieDetail extends StatelessWidget {
                     Container(
                       decoration: BoxDecoration(
                           image: DecorationImage(
-                              image: new NetworkImage(
+                              image: NetworkImage(
                                   'https://image.tmdb.org/t/p/w500/${modelito.posterPath}'))),
                       height: size.maxHeight,
                       width: size.maxHeight,
@@ -185,7 +180,7 @@ class MovieDetail extends StatelessWidget {
                         Expanded(
                           child: Container(
                             child: Text(modelito.title.toString(),
-                                style: TextStyle(
+                                style: const TextStyle(
                                     fontSize: 30, fontWeight: FontWeight.bold)),
                           ),
                         ),

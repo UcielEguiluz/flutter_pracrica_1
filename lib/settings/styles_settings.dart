@@ -16,6 +16,6 @@ class StylesSettings {
     return theme.copyWith(
         colorScheme: Theme.of(context)
             .colorScheme
-            .copyWith(primary: Color.fromARGB(255, 4, 155, 24)));
+            .copyWith(primary: const Color.fromARGB(255, 4, 155, 24)));
   }
 }

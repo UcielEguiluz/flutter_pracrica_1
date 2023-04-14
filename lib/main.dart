@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_2/provider/flags_provider.dart';
 import 'package:flutter_application_2/provider/theme_provider.dart';
 import 'package:flutter_application_2/routes.dart';
-import 'package:flutter_application_2/screens/login_screen.dart';
 import 'package:flutter_application_2/screens/onboarding_page.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -30,7 +29,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => ThemeProvider(isDark, isLight)),
         ChangeNotifierProvider(create: (_) => FlagsProvider())
       ],
-      child: PMSNApp(),
+      child: const PMSNApp(),
     );
   }
 }

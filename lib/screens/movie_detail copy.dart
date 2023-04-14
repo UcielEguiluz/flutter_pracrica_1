@@ -14,7 +14,7 @@ class MovieDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final imgPortada = Image(
-        image: new NetworkImage(
+        image: NetworkImage(
             'https://image.tmdb.org/t/p/w500/${modelito.posterPath}'),
         height: 200,
         width: 200,
@@ -24,13 +24,13 @@ class MovieDetail extends StatelessWidget {
       body: Stack(
         children: [
           Container(
-            decoration: new BoxDecoration(
-                color: Color.fromARGB(255, 58, 64, 73),
-                image: new DecorationImage(
+            decoration: BoxDecoration(
+                color: const Color.fromARGB(255, 58, 64, 73),
+                image: DecorationImage(
                     fit: BoxFit.cover,
-                    colorFilter: new ColorFilter.mode(
+                    colorFilter: ColorFilter.mode(
                         Colors.black.withOpacity(0.2), BlendMode.dstATop),
-                    image: new NetworkImage(
+                    image: NetworkImage(
                         'https://image.tmdb.org/t/p/w500/${modelito.posterPath}'))),
           ),
           
@@ -47,18 +47,18 @@ class MovieDetail extends StatelessWidget {
 
   Widget info() {
     return Container(
-      padding: EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(8.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             modelito.title.toString(),
-            style: TextStyle(
+            style: const TextStyle(
                 color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold),
             overflow: TextOverflow.fade,
           maxLines: 1,
           ),
-          Text('edctfdyasgvbijasndjkasndjkasdjklaskldjaskldjaskldjaskldjaskldjaskldj')
+          const Text('edctfdyasgvbijasndjkasndjkasdjklaskldjaskldjaskldjaskldjaskldjaskldj')
         ],
       ),
     );

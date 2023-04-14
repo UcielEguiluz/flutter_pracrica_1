@@ -26,7 +26,7 @@ class _ListPopularVideosState extends State<ListPopularVideos> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('List Popular'),
+        title: const Text('List Popular'),
       ),
       body: Stack(
         children: [
@@ -35,8 +35,8 @@ class _ListPopularVideosState extends State<ListPopularVideos> {
             builder: (context, AsyncSnapshot<List<PopularModel>?> snapshot) {
               if (snapshot.hasData) {
                 return GridView.builder(
-                  padding: EdgeInsets.all(15),
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  padding: const EdgeInsets.all(15),
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
                     childAspectRatio: .9,
                     mainAxisSpacing: 15,
@@ -56,11 +56,11 @@ class _ListPopularVideosState extends State<ListPopularVideos> {
                   },
                 );
               } else if (snapshot.hasError) {
-                return Center(
+                return const Center(
                   child: Text('Tiene error'),
                 );
               } else {
-                return CircularProgressIndicator();
+                return const CircularProgressIndicator();
               }
             }),
             Align(
@@ -69,8 +69,8 @@ class _ListPopularVideosState extends State<ListPopularVideos> {
                 onPressed: (){
                   Navigator.pushNamed(context, '/apiMoviesFav');
                 },
-                icon: Icon(Icons.favorite),
-                label: Text('Favoritos')))],
+                icon: const Icon(Icons.favorite),
+                label: const Text('Favoritos')))],
       ),
     );
   }

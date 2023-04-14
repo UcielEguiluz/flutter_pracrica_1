@@ -23,7 +23,7 @@ class _ListFavoritesState extends State<ListFavorites> {
   Widget build(BuildContext context) {
    return Scaffold(
       appBar: AppBar(
-        title: Text('List Favorites'),
+        title: const Text('List Favorites'),
       ),
       body: Stack(
         children: [
@@ -32,8 +32,8 @@ class _ListFavoritesState extends State<ListFavorites> {
             builder: (context, AsyncSnapshot<List<PopularModel>?> snapshot) {
               if (snapshot.hasData) {
                 return GridView.builder(
-                  padding: EdgeInsets.all(15),
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  padding: const EdgeInsets.all(15),
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
                     childAspectRatio: .9,
                     mainAxisSpacing: 15,
@@ -53,19 +53,19 @@ class _ListFavoritesState extends State<ListFavorites> {
                   },
                 );
               } else if (snapshot.hasError) {
-                return Center(
+                return const Center(
                   child: Text('Tiene error'),
                 );
               } else {
-                return CircularProgressIndicator();
+                return const CircularProgressIndicator();
               }
             }),
             Align(
               alignment: Alignment.bottomRight,
               child: FloatingActionButton.extended(
                 onPressed: (){},
-                icon: Icon(Icons.favorite),
-                label: Text('Favoritos')))],
+                icon: const Icon(Icons.favorite),
+                label: const Text('Favoritos')))],
       ),
     );
   }

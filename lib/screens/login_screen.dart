@@ -24,7 +24,7 @@ class _LoginScreenState extends State<LoginScreen> {
         label: Text('Tu contrasenia'), border: OutlineInputBorder()),
   );
 
-  final spaceHorizontal = SizedBox(
+  final spaceHorizontal = const SizedBox(
     height: 10,
   );
   //Aqui debajo se importó una "libreria" de dev.net que agrega botonos para login de diferentes medias, como google, facebook, etc.
@@ -61,7 +61,7 @@ class _LoginScreenState extends State<LoginScreen> {
         onPressed: () {
           isLoading = true;
           setState(() {});
-          Future.delayed(Duration(milliseconds: 4000)).then((value) {
+          Future.delayed(const Duration(milliseconds: 4000)).then((value) {
             isLoading = false;
             setState(() {});
             Navigator.pushNamed(context, '/dash');

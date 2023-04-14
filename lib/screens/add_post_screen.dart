@@ -22,15 +22,15 @@ class AddPostScreen extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: Container(
-          margin: EdgeInsets.all(20),
-          padding: EdgeInsets.all(15),
+          margin: const EdgeInsets.all(20),
+          padding: const EdgeInsets.all(15),
           height: 350,
           decoration: BoxDecoration(
               color: Colors.lightGreen,
               border: Border.all(color: Colors.black)),
           child: Column(
             children: [
-              objPostModel == null ? Text('Add Post') : Text('Update Post'),
+              objPostModel == null ? const Text('Add Post') : const Text('Update Post'),
               TextFormField(
                 maxLines: 8,
                 controller: txtConPost,
@@ -69,7 +69,7 @@ class AddPostScreen extends StatelessWidget {
                     }
                     flag.setflagListPost();
                   },
-                  child: Text('Save Post'))
+                  child: const Text('Save Post'))
             ],
           ),
         ),

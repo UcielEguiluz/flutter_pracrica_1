@@ -2,13 +2,12 @@ import "dart:io";
 import "package:flutter_application_2/models/popular_model.dart";
 import "package:flutter_application_2/models/post_model.dart";
 import 'package:path/path.dart';
-import "package:flutter_application_2/routes.dart";
 import "package:path_provider/path_provider.dart";
 import "package:sqflite/sqflite.dart";
 
 class DatabaseHelper {
-  static final nameDB = 'SOCIALDB';
-  static final versionDB = 1;
+  static const nameDB = 'SOCIALDB';
+  static const versionDB = 1;
 
   static Database? _database;
 
@@ -83,14 +82,14 @@ class DatabaseHelper {
     return result.map((event) => PopularModel.fromMap(event)).toList();
   }
 
-   Future<int> DELETEpopular(String tblName, int id_popular) async {
+   Future<int> DELETEpopular(String tblName, int idPopular) async {
     var conexion = await database;
-    return conexion.delete(tblName, where: 'id=?', whereArgs: [id_popular]);
+    return conexion.delete(tblName, where: 'id=?', whereArgs: [idPopular]);
   }
 
-  Future<bool> GETONEpopular(int id_popular) async {
+  Future<bool> GETONEpopular(int idPopular) async {
     var conexion = await database;
-    var result = await conexion.query('tblPopularFavorito',where: 'id=$id_popular');
+    var result = await conexion.query('tblPopularFavorito',where: 'id=$idPopular');
     if (result.isNotEmpty){
       return true;
     }

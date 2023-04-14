@@ -13,7 +13,7 @@ class ItemPopular extends StatelessWidget {
         tag: popularModel.id!,
         child: FadeInImage(
           fit: BoxFit.fitHeight,
-            placeholder: AssetImage('assets/loading.gif'),
+            placeholder: const AssetImage('assets/loading.gif'),
             image: NetworkImage('https://image.tmdb.org/t/p/w500/${popularModel.posterPath}')),
       ),
     );

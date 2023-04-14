@@ -4,7 +4,6 @@ import 'package:flutter_application_2/models/post_model.dart';
 import 'package:flutter_application_2/provider/flags_provider.dart';
 import 'package:flutter_application_2/widgets/item_post_widget.dart';
 import 'package:provider/provider.dart';
-import 'package:sqflite/sqflite.dart';
 
 class ListPost extends StatefulWidget {
   const ListPost({super.key});
@@ -15,6 +14,7 @@ class ListPost extends StatefulWidget {
 DatabaseHelper? database;
 
 class _ListPostState extends State<ListPost> {
+  @override
   void initState() {
     super.initState();
     database = DatabaseHelper();
@@ -38,9 +38,9 @@ class _ListPostState extends State<ListPost> {
             },
           );
         } else if (snapshot.hasError) {
-          return Center(child: Text("Ocurrio un error"));
+          return const Center(child: Text("Ocurrio un error"));
         } else {
-          return Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator());
         }
       },
     );

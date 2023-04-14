@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_2/provider/theme_provider.dart';
-import 'package:flutter_application_2/settings/styles_settings.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class TemasPage extends StatefulWidget {
   const TemasPage({super.key});
@@ -14,7 +10,7 @@ class TemasPage extends StatefulWidget {
 }
 
 class _TemasPageState extends State<TemasPage> {
-  final espacio = SizedBox(
+  final espacio = const SizedBox(
     height: 10,
   );
   @override
@@ -23,14 +19,14 @@ class _TemasPageState extends State<TemasPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Preferencias temas'),
+        title: const Text('Preferencias temas'),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox.fromSize(
-              size: Size(80, 80),
+              size: const Size(80, 80),
               child: ClipOval(
                 child: Material(
                   color: Colors.blueAccent,
@@ -39,7 +35,7 @@ class _TemasPageState extends State<TemasPage> {
                     onTap: () {
                       theme.TemaClaro();
                     },
-                    child: Column(
+                    child: const Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [Icon(Icons.wb_sunny_outlined), Text("Claro")],
                     ),
@@ -49,7 +45,7 @@ class _TemasPageState extends State<TemasPage> {
             ),
             espacio,
             SizedBox.fromSize(
-              size: Size(80, 80),
+              size: const Size(80, 80),
               child: ClipOval(
                 child: Material(
                   color: Colors.black54,
@@ -58,7 +54,7 @@ class _TemasPageState extends State<TemasPage> {
                     onTap: () {
                       theme.TemaOscuro();
                     },
-                    child: Column(
+                    child: const Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Icon(Icons.nightlight_outlined),
@@ -71,16 +67,16 @@ class _TemasPageState extends State<TemasPage> {
             ),
             espacio,
             SizedBox.fromSize(
-              size: Size(80, 80),
+              size: const Size(80, 80),
               child: ClipOval(
                 child: Material(
-                  color: Color.fromARGB(255, 4, 155, 24),
+                  color: const Color.fromARGB(255, 4, 155, 24),
                   child: InkWell(
-                    splashColor: Color.fromARGB(255, 82, 198, 98),
+                    splashColor: const Color.fromARGB(255, 82, 198, 98),
                     onTap: () {
                       theme.TemaPersonalizado();
                     },
-                    child: Column(
+                    child: const Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Icon(Icons.brush_outlined),

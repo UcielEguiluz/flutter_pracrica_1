@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:flutter_application_2/models/actor_model.dart';
 import 'package:flutter_application_2/models/popular_model.dart';
-import 'package:flutter_application_2/models/post_model.dart';
 import 'package:http/http.dart' as http;
 
 class ApiPopular {
@@ -27,9 +26,9 @@ class ApiPopular {
     return null;
   }
 
-   Future<String> getVideo(int id_popular) async {
+   Future<String> getVideo(int idPopular) async {
     Uri linkEN = Uri.parse(
-        'https://api.themoviedb.org/3/movie/$id_popular/videos?api_key=89dbf5270b59edd2f28730765b489b9e');
+        'https://api.themoviedb.org/3/movie/$idPopular/videos?api_key=89dbf5270b59edd2f28730765b489b9e');
     var result = await http.get(linkEN);
     var listJSON = jsonDecode(result.body)['results'] as List;
     if (result.statusCode == 200) {

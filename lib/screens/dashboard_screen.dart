@@ -1,13 +1,10 @@
-import 'package:day_night_switcher/day_night_switcher.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_2/provider/theme_provider.dart';
 import 'package:flutter_application_2/screens/list_post.dart';
-import 'package:flutter_application_2/settings/styles_settings.dart';
 import 'package:provider/provider.dart';
 
 class DashboardScreen extends StatefulWidget {
-  DashboardScreen({super.key});
+  const DashboardScreen({super.key});
 
   @override
   State<DashboardScreen> createState() => _DashboardScreenState();
@@ -21,11 +18,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
     ThemeProvider theme = Provider.of<ThemeProvider>(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text('Bueno para las cuentas'),
+        title: const Text('Bueno para las cuentas'),
       ),
       body: Container(
-        padding: EdgeInsets.all(25),
-        child: ListPost(),
+        padding: const EdgeInsets.all(25),
+        child: const ListPost(),
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
@@ -33,13 +30,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
             setState(() {});
           });
         },
-        label: Text('add post'),
-        icon: Icon(Icons.add_comment),
+        label: const Text('add post'),
+        icon: const Icon(Icons.add_comment),
       ),
       drawer: Drawer(
         child: ListView(
           children: [
-            UserAccountsDrawerHeader(
+            const UserAccountsDrawerHeader(
                 currentAccountPicture: CircleAvatar(
                   backgroundImage: NetworkImage(
                       'https://cdns-images.dzcdn.net/images/artist/3afa81d065245355854d803b55b66681/500x500.jpg'),
@@ -48,27 +45,36 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 accountEmail: Text('rancho@humilde.com.mx')), 
             ListTile(
               onTap: () {},
-              title: Text('practica 1'),
-              subtitle: Text('Descripcion de la practica'),
-              leading: Icon(Icons.settings),
-              trailing: Icon(Icons.chevron_right),
+              title: const Text('practica 1'),
+              subtitle: const Text('Descripcion de la practica'),
+              leading: const Icon(Icons.settings),
+              trailing: const Icon(Icons.chevron_right),
             ),
             ListTile(
               onTap: () {Navigator.pushNamed(context, '/apiMovies');},
-              title: Text('Popular de API'),
-              subtitle: Text('Ver las peliculas mas populares de la api'),
-              leading: Icon(Icons.settings),
-              trailing: Icon(Icons.movie),
+              title: const Text('Popular de API'),
+              subtitle: const Text('Ver las peliculas mas populares de la api'),
+              leading: const Icon(Icons.settings),
+              trailing: const Icon(Icons.movie),
             ),
             ListTile(
               onTap: () {
                 Navigator.pushNamed(context, '/temas');
               },
-              title: Text('Preferencias Temas'),
-              subtitle: Text("Selecciona la preferencia de tu tema"),
-              leading: Icon(Icons.settings),
-              trailing: Icon(Icons.chevron_right),
+              title: const Text('Preferencias Temas'),
+              subtitle: const Text("Selecciona la preferencia de tu tema"),
+              leading: const Icon(Icons.settings),
+              trailing: const Icon(Icons.chevron_right),
             ),
+            ListTile(
+              onTap: () {
+                Navigator.pushNamed(context, '/news');
+              },
+              title: const Text('Ver las oticias'),
+              subtitle: const Text("Ps ver noticias"),
+              leading: const Icon(Icons.newspaper),
+              trailing: const Icon(Icons.chevron_right),
+            )
 
             /*DayNightSwitcher(
               isDarkModeEnabled: isDarkModeEnabled,

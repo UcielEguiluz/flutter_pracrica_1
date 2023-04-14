@@ -31,7 +31,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     final imageTemporaly = File(image.path);
 
     setState(() {
-      this._image = imageTemporaly;
+      _image = imageTemporaly;
     });
   }
 
@@ -42,7 +42,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     final imageTemporaly = File(image.path);
 
     setState(() {
-      this._image = imageTemporaly;
+      _image = imageTemporaly;
     });
   }
 
@@ -111,7 +111,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     child: TextFormField(
                       
                       // The validator receives the text that the user has entered.
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         hintStyle: TextStyle(color: Colors.black87),
                           enabledBorder: OutlineInputBorder(
                               borderSide:
@@ -125,7 +125,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     padding: const EdgeInsets.all(8.0),
                     child: TextFormField(
                       // The validator receives the text that the user has entered.
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         hintStyle: TextStyle(color: Colors.black87),
                           enabledBorder: OutlineInputBorder(
                               borderSide:
@@ -143,7 +143,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     padding: const EdgeInsets.all(8.0),
                     child: TextFormField(
                       // The validator receives the text that the user has entered.
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         hintStyle: TextStyle(color: Colors.black87),
                           enabledBorder: OutlineInputBorder(
                               borderSide:
